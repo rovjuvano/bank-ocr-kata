@@ -10,14 +10,14 @@ class BankOCRScanner
   def entries(io)
     Enumerator.new do |y|
       until io.eof?
-        y << StringIO.new(io.gets(''))
+        y << io.gets('')
       end
     end
   end
 
-  def digits(io)
+  def digits(entry)
     Enumerator.new do |y|
-      9.times { y << io.gets(3) }
+      0.upto(8){ |i| y << entry[i*3,3] }
     end
   end
 end
