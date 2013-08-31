@@ -44,5 +44,22 @@ describe BankOCRScanner do
         Then { result == ['001101100'] }
       end
     end
+
+    context 'multiple entries' do
+      Given(:file) {
+        StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "| || || || || || || || || |\n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            "\n" +
+            "                           \n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "\n"
+        )
+      }
+      When(:result) { scanner.parse(file) }
+      Then { result == ['000000000', '111111111'] }
+    end
   end
 end
