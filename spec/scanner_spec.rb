@@ -14,7 +14,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file) }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == ['000000000'] }
       end
 
@@ -27,7 +27,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file) }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == ['111111111'] }
       end
 
@@ -40,7 +40,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file) }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == ['001101100'] }
       end
     end
@@ -58,7 +58,7 @@ describe BankOCRScanner do
             "\n"
         )
       }
-      When(:result) { scanner.parse(file) }
+      When(:result) { scanner.parse(file).to_a }
       Then { result == ['000000000', '111111111'] }
     end
   end
