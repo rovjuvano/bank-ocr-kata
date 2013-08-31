@@ -2,9 +2,13 @@ class BankOCRScanner
   def parse(io)
     entries(io).collect() do |line|
       digits(line).collect() do |d|
-        d =~ /^ _ / ? '0' : '1'
+        parse_digit(d)
       end.join('')
     end
+  end
+
+  def parse_digit(digit)
+    digit =~ /^ _ / ? '0' : '1'
   end
 
   def entries(io)
