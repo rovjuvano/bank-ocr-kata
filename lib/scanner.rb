@@ -4,7 +4,7 @@ class BankOCRScanner
     digits(io) do |d|
       result << (d =~ /^ _ / ? '0' : '1')
     end
-    result
+    [result]
   end
 
   def digits(io, &block)

@@ -15,7 +15,7 @@ describe BankOCRScanner do
           )
         }
         When(:result) { scanner.parse(file) }
-        Then { result == '000000000' }
+        Then { result == ['000000000'] }
       end
 
       context 'all 1s' do
@@ -28,7 +28,7 @@ describe BankOCRScanner do
           )
         }
         When(:result) { scanner.parse(file) }
-        Then { result == '111111111' }
+        Then { result == ['111111111'] }
       end
 
       context 'with mixed digits' do
@@ -41,7 +41,7 @@ describe BankOCRScanner do
           )
         }
         When(:result) { scanner.parse(file) }
-        Then { result == '001101100' }
+        Then { result == ['001101100'] }
       end
     end
   end
