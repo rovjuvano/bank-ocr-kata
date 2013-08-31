@@ -10,8 +10,7 @@ class BankOCRScanner
   def entries(io)
     Enumerator.new do |y|
       until io.eof?
-        entry = 4.times.collect { io.readline() }.join('\n')
-        y << StringIO.new(entry)
+        y << StringIO.new(io.gets(''))
       end
     end
   end
