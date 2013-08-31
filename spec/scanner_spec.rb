@@ -17,6 +17,19 @@ describe BankOCRScanner do
         When(:result) { scanner.parse(file) }
         Then { result == '000000000' }
       end
+
+      context 'all 1s' do
+        Given(:file) {
+          StringIO.new(
+            "                           \n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file) }
+        Then { result == '111111111' }
+      end
     end
   end
 end
