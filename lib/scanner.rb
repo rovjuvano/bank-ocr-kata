@@ -7,6 +7,7 @@ class BankOCRScanner
     end
   end
 
+  private
   def parse_digit(digit)
     digit =~ /^ _ / ? '0' : '1'
   end
