@@ -31,8 +31,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['111111111'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('111111111')] }
       end
 
       context 'with mixed digits' do
@@ -44,8 +44,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['001101100'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('001101100')] }
       end
 
       context 'with 2s' do
@@ -57,8 +57,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['222222222'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('222222222')] }
       end
 
       context 'with 3s' do
@@ -70,8 +70,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['333333333'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('333333333')] }
       end
 
       context 'with 4s' do
@@ -83,8 +83,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['444444444'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('444444444')] }
       end
 
       context 'with 5s' do
@@ -96,8 +96,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['555555555'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('555555555')] }
       end
 
       context 'with 6s' do
@@ -109,8 +109,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['666666666'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('666666666')] }
       end
 
       context 'with 7s' do
@@ -122,8 +122,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['777777777'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('777777777')] }
       end
 
       context 'with 8s' do
@@ -135,8 +135,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['888888888'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('888888888')] }
       end
 
       context 'with 9s' do
@@ -148,8 +148,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['999999999'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('999999999')] }
       end
     end
 
@@ -166,8 +166,8 @@ describe BankOCRScanner do
             "\n"
         )
       }
-      When(:result) { scanner.parse(file).to_a }
-      Then { result == ['000000000', '111111111'] }
+      When(:result) { scanner.parse(file, false).to_a }
+      Then { result == [E('000000000'), E('111111111')] }
     end
   end
 end
