@@ -63,11 +63,9 @@ class BankOCRScanner
     end
 
     def valid?()
-      sum = 0
-      1.upto(9) do |i|
-        sum += @number[9-i].to_i * i
-      end
-      sum % 11 == 0
+      1.upto(9).inject(0) do |sum, i|
+        sum + @number[9-i].to_i * i
+      end % 11 == 0
     end
   end
 end
