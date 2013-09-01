@@ -2,14 +2,18 @@ class BankOCRScanner
   def parse(io)
     Enumerator.new do |y|
       entries(io).each do |line|
-        y << digits(line).collect() do |d|
-          parse_digit(d)
-        end.join('')
+        y << parse_entry(line)
       end
     end
   end
 
   private
+  def parse_entry(line)
+    digits(line).collect() do |d|
+      parse_digit(d)
+    end.join('')
+  end
+
   def parse_digit(digit)
     digit =~ /^ _ / ? '0' : '1'
   end
