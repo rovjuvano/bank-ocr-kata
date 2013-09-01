@@ -14,16 +14,14 @@ class BankOCRScanner
     end.join('')
   end
 
+  DIGITS = {
+    ' _ | ||_|' => '0',
+    '     |  |' => '1',
+    ' _  _||_ ' => '2',
+    ' _  _| _|' => '3',
+  }
   def parse_digit(digit)
-    if digit[0] =~ /^ _ /
-      if digit[1] =~ /^ _\|/
-        digit[2] =~ /^ _\|/ ? '3' : '2'
-      else
-        '0'
-      end
-    else
-      '1'
-    end
+    DIGITS[digit.join('')]
   end
 
   def entries(io)
