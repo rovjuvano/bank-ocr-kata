@@ -15,7 +15,11 @@ class BankOCRScanner
   end
 
   def parse_digit(digit)
-    digit =~ /^ _ / ? '0' : '1'
+    if digit[0] =~ /^ _ /
+      digit[1] =~ /^ _\|/ ? '2' : '0'
+    else
+      '1'
+    end
   end
 
   def entries(io)
@@ -28,7 +32,7 @@ class BankOCRScanner
 
   def digits(entry)
     Enumerator.new do |y|
-      0.upto(8){ |i| y << entry[i*3,3] }
+      0.upto(8) { |i| y << [ entry[i*3,3], entry[i*3+28,3] ] }
     end
   end
 end
