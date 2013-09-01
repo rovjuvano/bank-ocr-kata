@@ -16,7 +16,11 @@ class BankOCRScanner
 
   def parse_digit(digit)
     if digit[0] =~ /^ _ /
-      digit[1] =~ /^ _\|/ ? '2' : '0'
+      if digit[1] =~ /^ _\|/
+        digit[2] =~ /^ _\|/ ? '3' : '2'
+      else
+        '0'
+      end
     else
       '1'
     end
@@ -32,7 +36,7 @@ class BankOCRScanner
 
   def digits(entry)
     Enumerator.new do |y|
-      0.upto(8) { |i| y << [ entry[i*3,3], entry[i*3+28,3] ] }
+      0.upto(8) { |i| y << [ entry[i*3,3], entry[i*3+28,3], entry[i*3+56,3] ] }
     end
   end
 end

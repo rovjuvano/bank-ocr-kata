@@ -56,6 +56,19 @@ describe BankOCRScanner do
         When(:result) { scanner.parse(file).to_a }
         Then { result == ['222222222'] }
       end
+
+      context 'with 3s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            " _| _| _| _| _| _| _| _| _|\n" +
+            " _| _| _| _| _| _| _| _| _|\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['333333333'] }
+      end
     end
 
     context 'with multiple entries' do
