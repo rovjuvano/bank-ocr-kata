@@ -1,8 +1,9 @@
 class BankOCRScanner
-  def parse(io)
+  def parse(io, primitive=true)
     Enumerator.new do |y|
       entries(io).each do |line|
-        y << parse_entry(line)
+        entry = parse_entry(line)
+        y << ( primitive ? entry : Entry.new(entry) )
       end
     end
   end
@@ -47,6 +48,18 @@ class BankOCRScanner
           entry[base+56, 3]
         ]
       end
+    end
+  end
+
+  class Entry
+    attr_reader :number
+
+    def initialize(number)
+      @number = number
+    end
+
+    def ==(other)
+      @number == other.number
     end
   end
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+def E(n)
+  BankOCRScanner::Entry.new(n)
+end
+
 describe BankOCRScanner do
   Given(:scanner) { BankOCRScanner.new }
 
@@ -14,8 +18,8 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file).to_a }
-        Then { result == ['000000000'] }
+        When(:result) { scanner.parse(file, false).to_a }
+        Then { result == [E('000000000')] }
       end
 
       context 'with 1s' do
