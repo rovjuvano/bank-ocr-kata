@@ -1,9 +1,9 @@
 class BankOCRScanner
-  def parse(io, primitive=true)
+  def parse(io, _=nil)
     Enumerator.new do |y|
       entries(io).each do |line|
         entry = parse_entry(line)
-        y << ( primitive ? entry : Entry.new(entry) )
+        y << Entry.new(entry)
       end
     end
   end
