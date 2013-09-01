@@ -176,5 +176,10 @@ describe BankOCRScanner do
       Given(:entry) { E('664371495') }
       Then { not entry.valid? }
     end
+
+    context 'with valid checksum' do
+      Given(:entry) { E('457508000') }
+      Then { entry.valid? }
+    end
   end
 end
