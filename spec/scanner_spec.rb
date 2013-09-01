@@ -18,7 +18,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('000000000')] }
       end
 
@@ -31,7 +31,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('111111111')] }
       end
 
@@ -44,7 +44,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('001101100')] }
       end
 
@@ -57,7 +57,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('222222222')] }
       end
 
@@ -70,7 +70,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('333333333')] }
       end
 
@@ -83,7 +83,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('444444444')] }
       end
 
@@ -96,7 +96,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('555555555')] }
       end
 
@@ -109,7 +109,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('666666666')] }
       end
 
@@ -122,7 +122,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('777777777')] }
       end
 
@@ -135,7 +135,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('888888888')] }
       end
 
@@ -148,7 +148,7 @@ describe BankOCRScanner do
             "\n"
           )
         }
-        When(:result) { scanner.parse(file, false).to_a }
+        When(:result) { scanner.parse(file).to_a }
         Then { result == [E('999999999')] }
       end
     end
@@ -166,7 +166,7 @@ describe BankOCRScanner do
             "\n"
         )
       }
-      When(:result) { scanner.parse(file, false).to_a }
+      When(:result) { scanner.parse(file).to_a }
       Then { result == [E('000000000'), E('111111111')] }
     end
   end
