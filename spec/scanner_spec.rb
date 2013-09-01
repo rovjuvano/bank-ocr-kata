@@ -69,6 +69,84 @@ describe BankOCRScanner do
         When(:result) { scanner.parse(file).to_a }
         Then { result == ['333333333'] }
       end
+
+      context 'with 4s' do
+        Given(:file) {
+          StringIO.new(
+            "                           \n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['444444444'] }
+      end
+
+      context 'with 5s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+            " _| _| _| _| _| _| _| _| _|\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['555555555'] }
+      end
+
+      context 'with 6s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['666666666'] }
+      end
+
+      context 'with 7s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "  |  |  |  |  |  |  |  |  |\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['777777777'] }
+      end
+
+      context 'with 8s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['888888888'] }
+      end
+
+      context 'with 9s' do
+        Given(:file) {
+          StringIO.new(
+            " _  _  _  _  _  _  _  _  _ \n" +
+            "|_||_||_||_||_||_||_||_||_|\n" +
+            " _| _| _| _| _| _| _| _| _|\n" +
+            "\n"
+          )
+        }
+        When(:result) { scanner.parse(file).to_a }
+        Then { result == ['999999999'] }
+      end
     end
 
     context 'with multiple entries' do
