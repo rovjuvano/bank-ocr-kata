@@ -61,5 +61,9 @@ class BankOCRScanner
     def ==(other)
       @number == other.number
     end
+
+    def valid?()
+      false
+    end
   end
 end

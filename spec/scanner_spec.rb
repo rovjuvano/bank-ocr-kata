@@ -170,4 +170,11 @@ describe BankOCRScanner do
       Then { result == [E('000000000'), E('111111111')] }
     end
   end
+
+  describe BankOCRScanner::Entry do
+    context 'with invalid checksum' do
+      Given(:entry) { E('664371495') }
+      Then { not entry.valid? }
+    end
+  end
 end
