@@ -1,5 +1,5 @@
 class BankOCRScanner
-  def parse(io, _=nil)
+  def parse(io)
     Enumerator.new do |y|
       entries(io).each do |line|
         entry = parse_entry(line)
