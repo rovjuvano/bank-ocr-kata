@@ -5,7 +5,7 @@ describe BankOCRScanner do
 
   describe '#parse' do
     context 'with single entry' do
-      context 'all 0s' do
+      context 'with 0s' do
         Given(:file) {
           StringIO.new(
             " _  _  _  _  _  _  _  _  _ \n" +
@@ -18,7 +18,7 @@ describe BankOCRScanner do
         Then { result == ['000000000'] }
       end
 
-      context 'all 1s' do
+      context 'with 1s' do
         Given(:file) {
           StringIO.new(
             "                           \n" +
@@ -44,7 +44,7 @@ describe BankOCRScanner do
         Then { result == ['001101100'] }
       end
 
-      context 'all 2s' do
+      context 'with 2s' do
         Given(:file) {
           StringIO.new(
             " _  _  _  _  _  _  _  _  _ \n" +
@@ -58,7 +58,7 @@ describe BankOCRScanner do
       end
     end
 
-    context 'multiple entries' do
+    context 'with multiple entries' do
       Given(:file) {
         StringIO.new(
             " _  _  _  _  _  _  _  _  _ \n" +
