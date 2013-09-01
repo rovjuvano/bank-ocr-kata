@@ -36,7 +36,13 @@ class BankOCRScanner
 
   def digits(entry)
     Enumerator.new do |y|
-      0.upto(8) { |i| y << [ entry[i*3,3], entry[i*3+28,3], entry[i*3+56,3] ] }
+      (0...27).step(3) do |base|
+        y << [
+          entry[base,    3],
+          entry[base+28, 3],
+          entry[base+56, 3]
+        ]
+      end
     end
   end
 end
