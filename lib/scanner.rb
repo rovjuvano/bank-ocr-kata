@@ -7,9 +7,8 @@ class BankOCRScanner
   # Returns Enumerator of Entry objects.
   def parse(io)
     Enumerator.new do |y|
-      entries(io).each do |line|
-        entry = parse_entry(line)
-        y << Entry.new(entry)
+      entries(io).each do |entry|
+        y << Entry.new( parse_entry(entry) )
       end
     end
   end
@@ -17,11 +16,11 @@ class BankOCRScanner
   private
   # Internal: Parse a single OCR entry into an account number.
   #
-  # line - The three line OCR representation of an account number.
+  # entry - The three line OCR representation of an account number.
   #
   # Returns the String representation of the OCR entry.
-  def parse_entry(line)
-    digits(line).collect() do |d|
+  def parse_entry(entry)
+    digits(entry).collect() do |d|
       parse_digit(d)
     end.join('')
   end
