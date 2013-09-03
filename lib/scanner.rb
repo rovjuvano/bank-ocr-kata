@@ -38,6 +38,7 @@ class BankOCRScanner
     ' _ |_||_|' => '8',
     ' _ |_| _|' => '9',
   }
+  DIGITS.default = '?'
   # Internal: Parse a single digit of OCR data into a string
   #
   # digit - The three line OCR representation of a single digit.

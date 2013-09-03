@@ -170,6 +170,19 @@ describe BankOCRScanner do
       When(:result) { scanner.parse(file).to_a }
       Then { result == [E('000000000'), E('111111111')] }
     end
+
+    context 'with illegible digit' do
+      Given(:file) {
+        StringIO.new(
+            " _        _  _ ___ _ ___ _ \n" +
+            "| ||_| | | ||_  | |_| | |_ \n" +
+            "|_|| | | |_| _| | | | | |_ \n" +
+            "\n"
+        )
+      }
+      When(:result) { scanner.parse(file).to_a }
+      Then { result == [E('0??05????')] }
+    end
   end
 
   describe BankOCRScanner::Entry do
