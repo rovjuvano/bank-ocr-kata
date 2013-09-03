@@ -97,9 +97,17 @@ class BankOCRScanner
     #
     # Returns true iff number is in the set of valid account numbers.
     def valid?()
+      legible? &&
       1.upto(9).inject(0) do |sum, i|
         sum + @number[9-i].to_i * i
       end % 11 == 0
+    end
+
+    # Public: Verify whether entry contains only readable digits
+    #
+    # Returns true iff every digit could be identified
+    def legible?()
+      number !~ /\?/
     end
   end
 end

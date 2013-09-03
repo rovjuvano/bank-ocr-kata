@@ -182,5 +182,11 @@ describe BankOCRScanner do
       Given(:entry) { E('457508000') }
       Then { entry.valid? }
     end
+
+    context 'with illegible digit' do
+      Given(:entry) { E('0000?0000') }
+      Then { not entry.legible? }
+       And { not entry.valid? }
+    end
   end
 end
