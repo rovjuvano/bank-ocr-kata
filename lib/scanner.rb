@@ -13,6 +13,21 @@ class BankOCRScanner
     end
   end
 
+  # Public: Parse OCR file and output result for each entry.
+  #
+  # input  - The file, etc. from which to read the OCR data.
+  # output - The file, etc. to which to write the report.
+  #
+  # Returns nothing.
+  def report(input, output)
+    parse(input).each do |entry|
+      flag = entry.legible? ?
+        entry.valid? ? '' : ' ERR'
+        : ' ILL'
+      output.puts(entry.number + flag)
+    end
+  end
+
   private
   # Internal: Parse a single OCR entry into an account number.
   #

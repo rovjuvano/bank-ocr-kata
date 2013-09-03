@@ -185,6 +185,28 @@ describe BankOCRScanner do
     end
   end
 
+  describe '#report' do
+    Given(:infile) {
+        StringIO.new(
+            "    _  _     _  _  _  _  _ \n" +
+            "  | _| _||_||_ |_   ||_||_|\n" +
+            "  ||_  _|  | _||_|  ||_| _|\n" +
+            "\n" +
+            " _  _     _  _        _  _ \n" +
+            "|_ |_ |_| _|  |  ||_||_||_ \n" +
+            "|_||_|  | _|  |  |  | _| _|\n" +
+            "\n" +
+            " _        _  _ ___ _ ___ _ \n" +
+            "| ||_| | | ||_  | |_| | |_ \n" +
+            "|_|| | | |_| _| | | | | |_ \n" +
+            "\n"
+        )
+    }
+    Given(:outfile) { StringIO.new() }
+    When { scanner.report(infile, outfile) }
+    Then { outfile.string == "123456789\n664371495 ERR\n0??05???? ILL\n" }
+  end
+
   describe BankOCRScanner::Entry do
     context 'with invalid checksum' do
       Given(:entry) { E('664371495') }
