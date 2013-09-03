@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'scanner'
+scanner = BankOCRScanner.new
+scanner.parse(STDIN).each do |entry|
+  if entry.valid?
+    puts entry.number
+  else
+    STDERR.puts "invalid entry: #{entry.number}"
+  end
+end
