@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module OCR
   describe ScannedDigit do
-    context('with valid pattern') do
+    context('when pattern represents 0') do
       Given(:lines) {[
         ' _ ',
         '| |',
@@ -10,6 +10,16 @@ module OCR
       ]}
       When(:digit) { ScannedDigit.new(*lines) }
       Then { digit.value == '0' }
+    end
+
+    context('when pattern represents 1') do
+      Given(:lines) {[
+        '   ',
+        '  |',
+        '  |'
+      ]}
+      When(:digit) { ScannedDigit.new(*lines) }
+      Then { digit.value == '1' }
     end
   end
 end
