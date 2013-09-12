@@ -5,7 +5,16 @@ module OCR
     end
 
     def value
-      @lines[0] =~ /^ _  _ / ? '000000000' : '010101010'
+      digits.collect { |digit| digit.value }.join('')
     end
+
+    protected
+      def digits()
+        (0..27).step(3).collect do |base|
+          ScannedDigit.new(@lines[0][base, 3],
+                           @lines[1][base, 3],
+                           @lines[2][base, 3])
+        end
+      end
   end
 end
