@@ -15,6 +15,13 @@ module OCR
       Then { scanned_number.value == '123456789' }
        And { scanned_number.valid? }
     end
+
+    context('with an invalid number') do
+      Given(:lines) { ocr_number(:ones) }
+      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Then { scanned_number.value == '111111111' }
+       And { not scanned_number.valid? }
+    end
   end
 end
 
