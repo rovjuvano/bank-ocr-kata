@@ -9,13 +9,13 @@ module OCR
     # Public: Split OCR file into single numbers/entries.
     #
     # Returns the Enumerator of ScannedNumbers.
-    def entries()
+    def entries(&block)
       Enumerator.new do |y|
         until @file.eof?
           lines = @file.gets('').split("\n")
           y << ScannedNumber.new(*lines)
         end
-      end
+      end.each(&block)
     end
   end
 end
