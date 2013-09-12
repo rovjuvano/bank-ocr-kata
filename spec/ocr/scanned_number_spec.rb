@@ -6,12 +6,14 @@ module OCR
       Given(:lines) { ocr_number(:zeros) }
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '000000000' }
+       And { scanned_number.valid? }
     end
 
     context('with each digit different') do
       Given(:lines) { ocr_number(:one_to_nine) }
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '123456789' }
+       And { scanned_number.valid? }
     end
   end
 end
