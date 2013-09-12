@@ -21,7 +21,9 @@ module OCR
     #
     # Returns true iff the number is a member of the set of valid account numbers.
     def valid?()
-      true
+      digits.each_with_index.inject(0) do |sum, (digit, i)|
+        sum + (9 - i) * digit.value.to_i
+      end % 11 == 0
     end
 
     protected
