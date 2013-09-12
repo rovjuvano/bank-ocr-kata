@@ -36,3 +36,20 @@ TO_OCR_DIGIT = {
 def ocr_digit(number)
   TO_OCR_DIGIT[number]
 end
+
+def ocr_number(number)
+  TO_OCR_NUMBER[number] || fail("Test case not setup in fixture: OCR number #{number}")
+end
+
+TO_OCR_NUMBER = {
+  :zeros => [
+    ' _  _  _  _  _  _  _  _  _ ',
+    '| || || || || || || || || |',
+    '|_||_||_||_||_||_||_||_||_|'
+  ],
+  :one_to_nine => [
+    '    _  _     _  _  _  _  _ ',
+    '  | _| _||_||_ |_   ||_||_|',
+    '  ||_  _|  | _||_|  ||_| _|'
+  ],
+}
