@@ -42,11 +42,13 @@ def ocr_number(number)
 end
 
 def ocr_file(*numbers)
-  StringIO.new(
-    numbers.collect do |n|
-      TO_OCR_NUMBER[n].join("\n")
-    end.join("\n\n") + "\n\n"
-  )
+  StringIO.new(ocr_contents(*numbers))
+end
+
+def ocr_contents(*numbers)
+  numbers.collect do |n|
+    TO_OCR_NUMBER[n].join("\n")
+  end.join("\n\n") + "\n\n"
 end
 
 TO_OCR_NUMBER = {
