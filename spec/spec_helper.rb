@@ -41,6 +41,14 @@ def ocr_number(number)
   TO_OCR_NUMBER[number] || fail("Test case not setup in fixture: OCR number #{number}")
 end
 
+def ocr_file(*numbers)
+  StringIO.new(
+    numbers.collect do |n|
+      TO_OCR_NUMBER[n].join("\n")
+    end.join("\n\n") + "\n\n"
+  )
+end
+
 TO_OCR_NUMBER = {
   :zeros => [
     ' _  _  _  _  _  _  _  _  _ ',
