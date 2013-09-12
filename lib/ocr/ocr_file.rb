@@ -1,12 +1,14 @@
 module OCR
+  # Public: Encapsulate a file of OCR data.
   class OCRFile
+    # Public: Initialize from IO object.
     def initialize(file)
       @file = file
     end
 
-    # Public: Split OCR file into single numbers/entries
+    # Public: Split OCR file into single numbers/entries.
     #
-    # Returns the Enumerator of ScannedNumbers
+    # Returns the Enumerator of ScannedNumbers.
     def entries()
       Enumerator.new do |y|
         until @file.eof?
