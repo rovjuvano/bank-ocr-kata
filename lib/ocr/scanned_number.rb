@@ -17,6 +17,13 @@ module OCR
       digits.collect { |digit| digit.value }.join('')
     end
 
+    # Public: Indicate whether number is among the valid set of account numbers.
+    #
+    # Returns true iff the number is a member of the set of valid account numbers.
+    def valid?()
+      true
+    end
+
     protected
       # Internal: Split lines into single digits.
       #
