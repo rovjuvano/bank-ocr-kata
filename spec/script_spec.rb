@@ -4,7 +4,7 @@ require 'open3'
 SCRIPT_NAME = File.dirname(__FILE__) + '/../bin/ocr'
 
 def run_script(contents)
-  Open3.capture2e(SCRIPT_NAME, :stdin_data => contents)[0]
+  Open3.capture2e({'RUBYLIB' => 'lib'}, SCRIPT_NAME, :stdin_data => contents)[0]
 end
 
 describe 'shell script' do

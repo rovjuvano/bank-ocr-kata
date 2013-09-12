@@ -1,2 +1,5 @@
 #!/usr/bin/env ruby
-puts "000000000", "123456789"
+require 'ocr'
+OCR::OCRFile.new($stdin).entries.each do |entry|
+  puts entry.value
+end
