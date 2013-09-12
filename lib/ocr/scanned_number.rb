@@ -31,7 +31,7 @@ module OCR
       #
       # Returns the Enumerable of ScannedDigits.
       def digits()
-        (0..27).step(3).collect do |base|
+        (0...27).step(3).collect do |base|
           ScannedDigit.new(@lines[0][base, 3],
                            @lines[1][base, 3],
                            @lines[2][base, 3])
