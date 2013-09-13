@@ -29,6 +29,15 @@ module OCR
           end
         end
       end
+
+      context 'after multiplying, values are summed' do
+        (2..9).each do |i|
+          context "digits 1 and #{i} from the end" do
+            Given(:digits) { make_digits('00000001'.insert(-i, '1')) }
+            Then { validator.checksum(digits) == i+1 }
+          end
+        end
+      end
     end
   end
 end
