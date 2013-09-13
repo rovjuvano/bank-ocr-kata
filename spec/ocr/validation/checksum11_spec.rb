@@ -1,14 +1,11 @@
 require 'spec_helper'
 
-class FakeDigit
-  attr_reader :value
-  def initialize(value)
-    @value = value
-  end
-end
-
 def make_digits(number)
-  number.chars.collect {|n| FakeDigit.new(n)}
+  number.chars.collect do |n|
+    d = OCR::ScannedDigit.new('', '', '')
+    d.stub(:value) { n }
+    d
+  end
 end
 
 module OCR
