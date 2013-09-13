@@ -4,7 +4,7 @@ module OCR
       def checksum(digits)
         digits.each_with_index.inject(0) do |sum, (digit, i)|
           sum + digit.value.to_i * (9-i)
-        end
+        end % 11
       end
     end
   end
