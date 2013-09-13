@@ -15,9 +15,8 @@ describe 'shell script' do
   end
 
   context 'with an invalid numbers' do
-    Given { pending('behavior not defined yet') }
     Given(:contents) { ocr_contents(:one_to_nine, :ones) }
     When(:output) { run_script(contents) }
-    Then { output == "123456789\n?????????\n" }
+    Then { output == "123456789\n111111111 ERR\n" }
   end
 end
