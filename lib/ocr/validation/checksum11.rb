@@ -2,7 +2,7 @@ module OCR
   module Validation
     class Checksum11 < Base
       def valid?(digits)
-        false
+        checksum(digits) == 0
       end
 
       def checksum(digits)
