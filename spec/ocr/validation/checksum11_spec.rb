@@ -21,11 +21,11 @@ module OCR
         Then { validator.checksum(digits) == 0 }
       end
 
-      context 'digit is multiplied by distance from end' do
+      context 'digit is multiplied by distance from end, then mods by 11' do
         (1..9).each do |i|
           context "with digit #{i} from end" do
             Given(:digits) { make_digits('00000000'.insert(-i, '7')) }
-            Then { validator.checksum(digits) == 7*i }
+            Then { validator.checksum(digits) == 7*i % 11 }
           end
         end
       end
@@ -37,6 +37,11 @@ module OCR
             Then { validator.checksum(digits) == i+1 }
           end
         end
+      end
+
+      context 'after summation, value is modded by 11' do
+        Given(:digits) { make_digits('100000002') }
+        Then { validator.checksum(digits) == 0 }
       end
     end
   end
