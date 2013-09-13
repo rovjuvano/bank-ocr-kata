@@ -45,6 +45,15 @@ module OCR
           Then { validator.checksum(digits) == 0 }
         end
       end
+
+      describe '#valid?' do
+        (1..10).each do |n|
+          context "with checksum == #{n}" do
+            Given(:digits) { make_digits('010001000' + n.to_s) }
+            Then { not validator.valid?(digits) }
+          end
+        end
+      end
     end
   end
 end
