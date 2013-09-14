@@ -14,7 +14,7 @@ describe 'shell script' do
     Then { output == "000000000\n123456789\n" }
   end
 
-  context 'with an invalid numbers' do
+  context 'with an invalid number' do
     Given(:contents) { ocr_contents(:one_to_nine, :ones) }
     When(:output) { run_script(contents) }
     Then { output == "123456789\n111111111 ERR\n" }
