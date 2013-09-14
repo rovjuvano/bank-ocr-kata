@@ -4,10 +4,12 @@ module OCR
       class BitFlipper < Base
         def guesses(line1, line2, line3)
           a = [line1, line2, line3]
-          OCR::ScannedDigit::TO_DIGIT.keys.select do |b|
-            differences(a, b.scan(/.../)) == 1
-          end.collect do |line|
-            OCR::ScannedDigit.new(*line.scan(/.../))
+          OCR::ScannedDigit::TO_DIGIT.keys.collect do |b|
+            b.scan(/.../)
+          end.select do |b|
+            differences(a, b) == 1
+          end.collect do |b|
+            OCR::ScannedDigit.new(*b)
           end
         end
 
