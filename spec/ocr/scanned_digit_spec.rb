@@ -24,6 +24,11 @@ module OCR
         Given(:b) { ocr_scanned_digit('0') }
         Then { a == b }
       end
+
+      context 'with different values' do
+        Given(:b) { ocr_scanned_digit('8') }
+        Then { a != b }
+      end
     end
   end
 end
