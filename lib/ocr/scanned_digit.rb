@@ -50,5 +50,12 @@ module OCR
     def value()
       TO_DIGIT[@value_raw]
     end
+
+    # Public: Flag whether digit is legible.
+    #
+    # Returns true if digit could be recognized
+    def legible?
+      false
+    end
   end
 end
