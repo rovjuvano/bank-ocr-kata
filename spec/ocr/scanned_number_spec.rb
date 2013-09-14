@@ -22,6 +22,13 @@ module OCR
       Then { scanned_number.value == '111111111' }
        And { not scanned_number.valid? }
     end
+
+    context('with an illegible digit') do
+      Given(:lines) { ocr_number(:illegible_checksum) }
+      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Then { scanned_number.value == '1???????2' }
+       And { not scanned_number.legible? }
+    end
   end
 end
 
