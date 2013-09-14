@@ -28,7 +28,7 @@ module OCR
     #
     # Returns true if every digit could be recognized
     def legible?()
-      false
+      digits.all? { |d| d.legible? }
     end
 
     protected
