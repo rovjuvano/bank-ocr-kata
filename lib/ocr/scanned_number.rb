@@ -21,6 +21,7 @@ module OCR
     #
     # Returns true iff the number is a member of the set of valid account numbers.
     def valid?()
+      legible? &&
       (@@validator ||= OCR::Validation::Checksum11.new).valid?(digits)
     end
 
