@@ -24,6 +24,13 @@ module OCR
       (@@validator ||= OCR::Validation::Checksum11.new).valid?(digits)
     end
 
+    # Public: Flag whether entire number is legible
+    #
+    # Returns true if every digit could be recognized
+    def legible?()
+      false
+    end
+
     protected
       # Internal: Split lines into single digits.
       #
