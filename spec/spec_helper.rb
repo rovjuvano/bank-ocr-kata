@@ -32,6 +32,9 @@ TO_OCR_DIGIT = {
   '9' => [ ' _ ',
            '|_|',
            ' _|' ],
+  ' ' => [ '   ',
+           '   ',
+           '   ' ],
 }
 def ocr_digit(number)
   TO_OCR_DIGIT[number]

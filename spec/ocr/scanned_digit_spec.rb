@@ -9,5 +9,11 @@ module OCR
         Then { scanned_digit.value == digit }
       end
     end
+
+    context 'when pattern not recognized' do
+      Given(:lines) { ocr_digit(' ') }
+      When(:scanned_digit) { OCR::ScannedDigit.new(*lines) }
+      Then { not scanned_digit.legible? }
+    end
   end
 end
