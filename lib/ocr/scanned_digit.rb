@@ -47,7 +47,7 @@ module OCR
 
     # Override
     def ==(other)
-      true
+      value == other.value
     end
 
     # Public: Get the String representation of digit.
