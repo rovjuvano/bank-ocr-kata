@@ -30,6 +30,7 @@ module OCR
       Given(:lines) { ocr_number(:illegible_checksum) }
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '1???????2' }
+       And { not scanned_number.valid? }
        And { not scanned_number.legible? }
     end
   end
