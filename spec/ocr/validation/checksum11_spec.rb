@@ -48,6 +48,11 @@ module OCR
             Then { not validator.valid?(digits) }
           end
         end
+
+        context 'with an illegible digit' do
+          Given(:number) { '0000 0000' }
+          Then { not validator.valid?(digits) }
+        end
       end
     end
   end
