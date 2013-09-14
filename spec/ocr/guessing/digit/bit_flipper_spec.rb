@@ -9,13 +9,20 @@ module OCR
         describe '#differences' do
           Given(:a) { ['   ', '   ', '   '] }
 
-          context 'with 0 differences' do
-            Then { guesser.differences(a, a) == 0 }
-          end
-
-          context 'with 1 difference' do
-            Given(:b) { ['  |', '   ', '   '] }
-            Then { guesser.differences(a, b) == 1 }
+          [ ['   ', '   ', '   '],
+            ['   ', '   ', '  |'],
+            ['   ', '   ', ' _|'],
+            ['   ', '   ', '|_|'],
+            ['   ', '  |', '|_|'],
+            ['   ', ' _|', '|_|'],
+            ['   ', '|_|', '|_|'],
+            ['  |', '|_|', '|_|'],
+            [' _|', '|_|', '|_|'],
+            ['|_|', '|_|', '|_|'] ].each_with_index do |b, i|
+            context "with #{i} difference(s)" do
+              Then { guesser.differences(a, b) == i }
+               And { guesser.differences(b, a) == i }
+            end
           end
         end
       end
