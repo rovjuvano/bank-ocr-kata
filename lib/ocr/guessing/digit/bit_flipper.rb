@@ -3,7 +3,7 @@ module OCR
     module Digit
       class BitFlipper
         def differences(a, b)
-          0
+          a.join('') == b.join('') ? 0 : 1
         end
       end
     end
