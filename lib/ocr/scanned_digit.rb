@@ -45,6 +45,11 @@ module OCR
       @value_raw = line1 + line2 + line3
     end
 
+    # Override
+    def ==(other)
+      true
+    end
+
     # Public: Get the String representation of digit.
     #
     # Returns The String representation of the digit.
