@@ -48,7 +48,7 @@ def ocr_scanned_digit(number)
 end
 
 def ocr_digits(number)
-  number.chars.collect { |n| OCR::ScannedDigit.new(*ocr_digit(n)) }
+  number.chars.collect { |n| ocr_scanned_digit(n) }
 end
 
 def ocr_number(number)
