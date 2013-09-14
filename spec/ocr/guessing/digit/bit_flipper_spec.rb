@@ -38,6 +38,12 @@ module OCR
             When(:guesses) { guesser.guesses(*lines) }
             Then { guesses == [ ocr_scanned_digit('7') ] }
           end
+
+          context 'with multiple matches' do
+            Given(:lines) { ocr_digit(159) }
+            When(:guesses) { guesser.guesses(*lines) }
+            Then { guesses == ['2', '3', '8'].collect { |n| ocr_scanned_digit(n) } }
+          end
         end
       end
     end
