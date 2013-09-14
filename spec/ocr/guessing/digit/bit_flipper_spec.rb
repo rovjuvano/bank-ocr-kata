@@ -25,6 +25,14 @@ module OCR
             end
           end
         end
+
+        describe '#guesses' do
+          context 'with no matches' do
+            Given(:lines) { ocr_digit(' ') }
+            When(:guesses) { guesser.guesses(*lines) }
+            Then { guesses == [] }
+          end
+        end
       end
     end
   end
