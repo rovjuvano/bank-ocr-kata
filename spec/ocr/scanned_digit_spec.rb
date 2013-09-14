@@ -17,5 +17,13 @@ module OCR
       Then { not scanned_digit.legible? }
        And { scanned_digit.value == '?' }
     end
+
+    describe '#==' do
+      Given(:a) { ocr_scanned_digit('0') }
+      context 'with same value' do
+        Given(:b) { ocr_scanned_digit('0') }
+        Then { a == b }
+      end
+    end
   end
 end

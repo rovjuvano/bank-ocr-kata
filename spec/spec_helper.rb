@@ -40,6 +40,10 @@ def ocr_digit(number)
   TO_OCR_DIGIT[number]
 end
 
+def ocr_scanned_digit(number)
+  OCR::ScannedDigit.new(*ocr_digit(number))
+end
+
 def ocr_digits(number)
   number.chars.collect { |n| OCR::ScannedDigit.new(*ocr_digit(n)) }
 end
