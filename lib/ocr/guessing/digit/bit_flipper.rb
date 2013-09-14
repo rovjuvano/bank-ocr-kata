@@ -1,7 +1,7 @@
 module OCR
   module Guessing
     module Digit
-      class BitFlipper
+      class BitFlipper < Base
         def differences(a, b)
           as = a.join('')
           bs = b.join('')
