@@ -7,6 +7,7 @@ module OCR
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '000000000' }
        And { scanned_number.valid? }
+       And { scanned_number.legible? }
     end
 
     context('with each digit different') do
@@ -14,6 +15,7 @@ module OCR
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '123456789' }
        And { scanned_number.valid? }
+       And { scanned_number.legible? }
     end
 
     context('with an invalid number') do
@@ -21,6 +23,7 @@ module OCR
       When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.value == '111111111' }
        And { not scanned_number.valid? }
+       And { scanned_number.legible? }
     end
 
     context('with an illegible digit') do
