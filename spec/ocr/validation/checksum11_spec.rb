@@ -1,18 +1,10 @@
 require 'spec_helper'
 
-def make_digits(number)
-  number.chars.collect do |n|
-    d = OCR::ScannedDigit.new('', '', '')
-    d.stub(:value) { n }
-    d
-  end
-end
-
 module OCR
   module Validation
     describe Checksum11 do
       Given(:validator) { Checksum11.new }
-      Given(:digits) { make_digits(number) }
+      Given(:digits) { ocr_digits(number) }
 
       describe '#checksum' do
         context 'zeros have no effect' do
