@@ -47,7 +47,7 @@ module OCR
 
     # Override
     def ==(other)
-      value == other.value
+      @value_raw == other.instance_variable_get(:@value_raw)
     end
 
     # Public: Get the String representation of digit.
