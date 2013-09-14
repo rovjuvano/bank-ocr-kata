@@ -32,6 +32,12 @@ module OCR
             When(:guesses) { guesser.guesses(*lines) }
             Then { guesses == [] }
           end
+
+          context 'with one match' do
+            Given(:lines) { ocr_digit('1') }
+            When(:guesses) { guesser.guesses(*lines) }
+            Then { guesses == [ ocr_scanned_digit('7') ] }
+          end
         end
       end
     end
