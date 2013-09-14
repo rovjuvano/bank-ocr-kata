@@ -27,22 +27,26 @@ module OCR
         end
 
         describe '#guesses' do
+          Given(:lines) { ocr_digit(digit) }
+          When(:guesses) { guesser.guesses(*lines) }
+          Invariant { guesses == expected.collect { |n| ocr_scanned_digit(n) } }
+
           context 'with no matches' do
-            Given(:lines) { ocr_digit(' ') }
-            When(:guesses) { guesser.guesses(*lines) }
-            Then { guesses == [] }
+            Given(:digit) { ' ' }
+            Given(:expected) { [] }
+            Then {}
           end
 
           context 'with one match' do
-            Given(:lines) { ocr_digit('1') }
-            When(:guesses) { guesser.guesses(*lines) }
-            Then { guesses == [ ocr_scanned_digit('7') ] }
+            Given(:digit) { '1' }
+            Given(:expected) { ['7'] }
+            Then {}
           end
 
           context 'with multiple matches' do
-            Given(:lines) { ocr_digit(159) }
-            When(:guesses) { guesser.guesses(*lines) }
-            Then { guesses == ['2', '3', '8'].collect { |n| ocr_scanned_digit(n) } }
+            Given(:digit) { 159 }
+            Given(:expected) { ['2', '3', '8'] }
+            Then {}
           end
         end
       end
