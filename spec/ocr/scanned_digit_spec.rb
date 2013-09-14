@@ -7,6 +7,7 @@ module OCR
         Given(:lines) { ocr_digit(digit) }
         When(:scanned_digit) { OCR::ScannedDigit.new(*lines) }
         Then { scanned_digit.value == digit }
+         And { scanned_digit.legible? }
       end
     end
 
