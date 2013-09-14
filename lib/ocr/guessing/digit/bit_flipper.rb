@@ -2,6 +2,7 @@ module OCR
   module Guessing
     module Digit
       class BitFlipper < Base
+        # Overrides
         def guesses(line1, line2, line3)
           a = [line1, line2, line3]
           OCR::ScannedDigit::TO_DIGIT.keys.collect do |b|
@@ -13,6 +14,11 @@ module OCR
           end
         end
 
+        # Internal: Calculate the number of differences between two OCR digits.
+        #
+        # a, b - The two OCR digits.
+        #
+        # Returns the count of differences.
         def differences(a, b)
           as = a.join('')
           bs = b.join('')
