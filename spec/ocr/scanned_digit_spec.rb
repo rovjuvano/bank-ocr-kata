@@ -15,6 +15,7 @@ module OCR
       Given(:lines) { ocr_digit(' ') }
       When(:scanned_digit) { OCR::ScannedDigit.new(*lines) }
       Then { not scanned_digit.legible? }
+       And { scanned_digit.value == '?' }
     end
   end
 end
