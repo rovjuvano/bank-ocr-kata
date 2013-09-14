@@ -6,9 +6,9 @@ module OCR
       #
       # digits - The Enumerator of the nine ScannedDigits of the number.
       #
-      # Returns true, always.
+      # Returns true if all digits are legible
       def valid?(digits)
-        true
+        digits.all? { |d| d.legible? }
       end
     end
   end
