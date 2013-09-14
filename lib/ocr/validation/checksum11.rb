@@ -4,7 +4,7 @@ module OCR
     class Checksum11 < Base
       # Override
       def valid?(digits)
-        checksum(digits) == 0
+        super(digits) && checksum(digits) == 0
       end
 
       # Internal: Calculate checksum used in validation.
