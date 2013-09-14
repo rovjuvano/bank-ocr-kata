@@ -19,4 +19,10 @@ describe 'shell script' do
     When(:output) { run_script(contents) }
     Then { output == "123456789\n111111111 ERR\n" }
   end
+
+  context 'with an illegible number' do
+    Given(:contents) { ocr_contents(:one_to_nine, :illegible_checksum) }
+    When(:output) { run_script(contents) }
+    Then { output == "123456789\n1???????2 ILL\n" }
+  end
 end

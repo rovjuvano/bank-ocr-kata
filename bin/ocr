@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 require 'ocr'
 OCR::OCRFile.new($stdin).entries do |entry|
-  puts entry.value + ( entry.valid? ? '' : ' ERR')
+  puts entry.value + ( entry.legible? ? entry.valid? ? '' : ' ERR' : ' ILL')
 end
