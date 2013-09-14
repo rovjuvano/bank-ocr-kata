@@ -40,6 +40,10 @@ def ocr_digit(number)
   TO_OCR_DIGIT[number]
 end
 
+def ocr_digits(number)
+  number.chars.collect { |n| OCR::ScannedDigit.new(*ocr_digit(n)) }
+end
+
 def ocr_number(number)
   TO_OCR_NUMBER[number] || fail("Test case not setup in fixture: OCR number #{number}")
 end
