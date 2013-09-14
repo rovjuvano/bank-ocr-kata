@@ -55,7 +55,7 @@ module OCR
     #
     # Returns true if digit could be recognized
     def legible?
-      false
+      !!value
     end
   end
 end
