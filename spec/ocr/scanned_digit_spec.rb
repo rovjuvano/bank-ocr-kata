@@ -19,15 +19,23 @@ module OCR
     end
 
     describe '#==' do
-      Given(:a) { ocr_scanned_digit('0') }
       context 'with same value' do
+        Given(:a) { ocr_scanned_digit('0') }
         Given(:b) { ocr_scanned_digit('0') }
         Then { a == b }
       end
 
       context 'with different values' do
+        Given(:a) { ocr_scanned_digit('0') }
         Given(:b) { ocr_scanned_digit('8') }
         Then { a != b }
+      end
+
+      context 'with different values' do
+        Given(:a) { ocr_scanned_digit(' ') }
+        Given(:b) { ocr_scanned_digit(:all) }
+        Then { a != b }
+         And { a.value == b.value }
       end
     end
   end
