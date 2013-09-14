@@ -34,6 +34,7 @@ module OCR
       '|_|' +
       ' _|' => '9',
     }
+    TO_DIGIT.default = '?'
 
     # Public: Initialize a single digit of scanned OCR data.
     #
@@ -55,7 +56,7 @@ module OCR
     #
     # Returns true if digit could be recognized
     def legible?
-      !!value
+      value != '?'
     end
   end
 end
