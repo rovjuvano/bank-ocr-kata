@@ -15,9 +15,9 @@ describe 'shell script' do
   end
 
   context 'with an invalid number' do
-    Given(:contents) { ocr_contents(:one_to_nine, :ones) }
+    Given(:contents) { ocr_contents(:one_to_nine, :twos) }
     When(:output) { run_script(contents) }
-    Then { output == "123456789\n111111111 ERR\n" }
+    Then { output == "123456789\n222222222 ERR\n" }
   end
 
   context 'with an illegible number' do
@@ -30,5 +30,11 @@ describe 'shell script' do
     Given(:contents) { ocr_contents(:one_to_nine, :eights) }
     When(:output) { run_script(contents) }
     Then { output == "123456789\n888888888 AMB\n" }
+  end
+
+  context 'with a correctable number' do
+    Given(:contents) { ocr_contents(:ones, :zeros_almost) }
+    When(:output) { run_script(contents) }
+    Then { output == "711111111\n000000000\n" }
   end
 end
