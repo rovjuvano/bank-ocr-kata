@@ -41,5 +41,13 @@ module OCR
                          @lines[2][base, 3])
       end
     end
+
+    # Public: Guess what else the number could be.
+    #
+    # Returns the Enumerator of Strings for possible values.
+    def guesses
+      (@@Guesser ||= Guessing::SingleDigit.new).guesses(self)
+    end
+
   end
 end
