@@ -14,6 +14,12 @@ module OCR
         Given(:expected) { [] }
         Then {}
       end
+
+      context 'with a single match' do
+        Given(:number) { :ones }
+        Given(:expected) { ['711111111'] }
+        Then {}
+      end
     end
   end
 end
