@@ -25,4 +25,10 @@ describe 'shell script' do
     When(:output) { run_script(contents) }
     Then { output == "123456789\n1???????2 ILL\n" }
   end
+
+  context 'with an ambiguous number' do
+    Given(:contents) { ocr_contents(:one_to_nine, :eights) }
+    When(:output) { run_script(contents) }
+    Then { output == "123456789\n888888888 AMB\n" }
+  end
 end
