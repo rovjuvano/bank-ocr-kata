@@ -14,13 +14,13 @@ describe 'shell script' do
     Then { output == "000000000\n123456789\n" }
   end
 
-  context 'with an invalid number' do
+  context 'with an (uncorrectable, non-guessable) invalid number' do
     Given(:contents) { ocr_contents(:one_to_nine, :twos) }
     When(:output) { run_script(contents) }
-    Then { output == "123456789\n222222222 ERR\n" }
+    Then { output == "123456789\n222222222 ILL\n" }
   end
 
-  context 'with an illegible number' do
+  context 'with an (uncorrectable) illegible number' do
     Given(:contents) { ocr_contents(:one_to_nine, :illegible_checksum) }
     When(:output) { run_script(contents) }
     Then { output == "123456789\n1???????2 ILL\n" }
