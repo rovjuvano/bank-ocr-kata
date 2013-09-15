@@ -3,11 +3,14 @@ require 'ocr'
 def format(entry)
   return entry.value if entry.valid?
 
-  entry.value +
-  if entry.guesses.size() > 1
-    ' AMB'
+  guesses = entry.guesses
+  case guesses.size()
+  when 0
+    entry.value + ( entry.legible? ?  ' ERR' : ' ILL' )
+  when 1
+    guesses.first
   else
-    entry.legible? ? ' ERR' : ' ILL'
+    "#{entry.value} AMB"
   end
 end
 
