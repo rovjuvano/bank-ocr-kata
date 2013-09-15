@@ -1,5 +1,16 @@
 #!/usr/bin/env ruby
 require 'ocr'
+def format(entry)
+  return entry.value if entry.valid?
+
+  entry.value +
+  if entry.guesses.size() > 1
+    ' AMB'
+  else
+    entry.legible? ? ' ERR' : ' ILL'
+  end
+end
+
 OCR::OCRFile.new($stdin).entries do |entry|
-  puts entry.value + ( entry.legible? ? entry.valid? ? '' : ' ERR' : ' ILL')
+  puts format(entry)
 end
