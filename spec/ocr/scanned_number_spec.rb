@@ -37,6 +37,11 @@ module OCR
       Given(:expected) { ocr_digits('123456789') }
       Then { scanned_number.digits.to_a == expected }
     end
+
+    describe '#guesses' do
+      Given(:number) { :eights }
+      Then { scanned_number.guesses.to_a.sort == ['888886888', '888888880', '888888988'] }
+    end
   end
 end
 
