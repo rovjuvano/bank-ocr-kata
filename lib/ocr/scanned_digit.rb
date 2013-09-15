@@ -61,7 +61,7 @@ module OCR
     #
     # Returns the Enumerator of ScannedDigits for possible values.
     def guesses
-      Guessing::Digit::BitFlipper.new.guesses(*@value_raw)
+      (@@Guesser ||= Guessing::Digit::BitFlipper.new).guesses(*@value_raw)
     end
 
     # Public: Flag whether digit is legible.
