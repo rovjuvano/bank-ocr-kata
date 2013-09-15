@@ -42,7 +42,7 @@ module OCR
     # line2 - The middle three characters of the digit.
     # line3 - The final three characters of the digit.
     def initialize(line1, line2, line3)
-      @value_raw = line1 + line2 + line3
+      @value_raw = [line1, line2, line3]
     end
 
     # Override
@@ -54,7 +54,7 @@ module OCR
     #
     # Returns The String representation of the digit.
     def value()
-      TO_DIGIT[@value_raw]
+      TO_DIGIT[@value_raw.join('')]
     end
 
     # Public: Flag whether digit is legible.
