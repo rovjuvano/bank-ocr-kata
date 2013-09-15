@@ -4,8 +4,7 @@ module OCR
   module Guessing
     describe SingleDigit do
       Given(:guesser) { SingleDigit.new }
-      Given(:lines) { ocr_number(number) }
-      Given(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Given(:scanned_number) { ocr_scanned_number(number) }
       When(:guesses) { guesser.guesses(scanned_number) }
       Invariant { guesses == expected }
 

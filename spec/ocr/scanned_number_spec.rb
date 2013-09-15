@@ -2,42 +2,39 @@ require 'spec_helper'
 
 module OCR
   describe ScannedNumber do
+    Given(:scanned_number) { ocr_scanned_number(number) }
+
     context('with just one digit class') do
-      Given(:lines) { ocr_number(:zeros) }
-      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Given(:number) { :zeros }
       Then { scanned_number.value == '000000000' }
        And { scanned_number.valid? }
        And { scanned_number.legible? }
     end
 
     context('with each digit different') do
-      Given(:lines) { ocr_number(:one_to_nine) }
-      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Given(:number) { :one_to_nine }
       Then { scanned_number.value == '123456789' }
        And { scanned_number.valid? }
        And { scanned_number.legible? }
     end
 
     context('with an invalid number') do
-      Given(:lines) { ocr_number(:ones) }
-      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Given(:number) { :ones }
       Then { scanned_number.value == '111111111' }
        And { not scanned_number.valid? }
        And { scanned_number.legible? }
     end
 
     context('with an illegible digit') do
-      Given(:lines) { ocr_number(:illegible_checksum) }
-      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Given(:number) { :illegible_checksum }
       Then { scanned_number.value == '1???????2' }
        And { not scanned_number.valid? }
        And { not scanned_number.legible? }
     end
 
     describe '#digits' do
-      Given(:lines) { ocr_number(:one_to_nine) }
+      Given(:number) { :one_to_nine }
       Given(:expected) { ocr_digits('123456789') }
-      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
       Then { scanned_number.digits.to_a == expected }
     end
   end

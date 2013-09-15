@@ -58,6 +58,10 @@ def ocr_number(number)
   TO_OCR_NUMBER[number] || fail("Test case not setup in fixture: OCR number #{number}")
 end
 
+def ocr_scanned_number(number)
+  OCR::ScannedNumber.new(*ocr_number(number))
+end
+
 def ocr_file(*numbers)
   StringIO.new(ocr_contents(*numbers))
 end
