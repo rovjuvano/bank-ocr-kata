@@ -33,6 +33,13 @@ module OCR
        And { not scanned_number.valid? }
        And { not scanned_number.legible? }
     end
+
+    describe '#digits' do
+      Given(:lines) { ocr_number(:one_to_nine) }
+      Given(:expected) { ocr_digits('123456789') }
+      When(:scanned_number) { OCR::ScannedNumber.new(*lines) }
+      Then { scanned_number.digits.to_a == expected }
+    end
   end
 end
 
