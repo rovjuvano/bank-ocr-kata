@@ -18,6 +18,11 @@ module OCR
        And { scanned_digit.value == '?' }
     end
 
+    describe '#guesses' do
+      Given(:scanned_digit) { ocr_scanned_digit(159) }
+      Then { scanned_digit.guesses == ['2', '3', '8'].collect { |n| ocr_scanned_digit(n) } }
+    end
+
     describe '#==' do
       context 'with same value' do
         Given(:a) { ocr_scanned_digit('0') }
