@@ -6,7 +6,7 @@ def format(entry)
   guesses = entry.guesses
   case guesses.size()
   when 0
-    entry.value + ( entry.legible? ?  ' ERR' : ' ILL' )
+    "#{entry.value} ILL"
   when 1
     guesses.first
   else
