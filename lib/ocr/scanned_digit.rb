@@ -57,6 +57,13 @@ module OCR
       TO_DIGIT[@value_raw.join('')]
     end
 
+    # Public: Guess what else the value could be.
+    #
+    # Returns the Enumerator of ScannedDigits for possible values.
+    def guesses
+      Guessing::Digit::BitFlipper.new.guesses(*@value_raw)
+    end
+
     # Public: Flag whether digit is legible.
     #
     # Returns true if digit could be recognized
