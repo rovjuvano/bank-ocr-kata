@@ -31,7 +31,7 @@ module OCR
         Then { a != b }
       end
 
-      context 'with different values' do
+      context 'with different OCR data' do
         Given(:a) { ocr_scanned_digit(' ') }
         Given(:b) { ocr_scanned_digit(:all) }
         Then { a != b }
